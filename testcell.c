@@ -2,9 +2,7 @@
 
 #define MAX_VOLTAGE 4.2
 #define MAX_CURRENT 2.0
-#define MIN_CURRENT 0.1
 #define MAX_TEMPERATURE 45.0
-#define MIN_TEMPERATURE 0.0
 #define TARGET_TEMPERATURE 40.0
 
 typedef struct {
@@ -29,11 +27,6 @@ void regulateTemperature(Battery *battery) {
         printf("Cooling down: Temperature = %.2f°C\n", battery->temperature);
         while (battery->temperature > TARGET_TEMPERATURE) {
             battery->temperature -= 1.0; // Simulate cooling
-        }
-    } else if (battery->temperature < MIN_TEMPERATURE) {
-        printf("Heating up: Temperature = %.2f°C\n", battery->temperature);
-        while (battery->temperature < MIN_TEMPERATURE) {
-            battery->temperature += 1.0; // Simulate heating
         }
     }
 }
